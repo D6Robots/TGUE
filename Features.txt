@@ -1,0 +1,20 @@
+
+Features:
+•	Combat : database of weapons, health, etc
+•	Pickups : power ups, objects, 
+•	changes mechanics
+•	Switchs: for doors
+•	Enemies: follows user, attacks user, different types
+•	Puzzles: simple and hard and humour
+•	Writing: simple story, funny, uni related
+•	Loot table
+•	AI
+•	Rooms
+
+
+
+
+Group tasks:
+•	Level-design
+•	Writing
+
