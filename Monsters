@@ -1,0 +1,105 @@
+#include <iostream>
+#include <time.h>
+#include <vector>
+#include <string> 
+
+class monster 
+
+{
+    public:
+            static int xPosition;
+            static int zPosition;
+            static int monsterstatus;
+            static int monstertotal;        
+
+} 
+
+int monster::monsterstatus = 0;
+int monster::monstertotal = 0;
+std::vector<int> monsterinfo::xPosition;
+std::vector<int> monsterinfo::zPosition;
+
+void AmountOfMonster ();
+void MonsterMovement();
+
+void AmountOfMonster( )
+{
+    while( true ) 
+    {
+        std::string input;
+
+        std::cout << "Enter desired amount of monsters: ";
+         std::cin >> input;
+
+        if( CheckUnvaildIntegerInput( input ) == true )
+        {
+            monsterinfo::monsterAmountDesired = atoi( input.c_str( ) ); // Convert string to integer.
+    }
+}
+
+    
+}
+    
+void MonsterMovement( )
+{
+    int xPos, zPos;
+    int randomPos;
+for( int i = 0; i < monsterinfo::monsterAmountCurrent; i++ )
+    {
+        bool RetryLoop = true;
+
+        do
+        {
+            randomPos = 1 + ( rand( ) % 8 );
+
+            switch( randomPos )
+            {
+                move 1:
+                {
+                    xPos = monsterinfo::xPosition[i] - 1;
+
+                    if( CheckForMonsterPosition( monsterinfo::xPosition[i], zPos ) == false)
+                    {
+                        monsterinfo::xPosition[i] -= 1; // Monster goes up.
+                        RetryLoop = false;
+                    }
+
+                    break;
+                }
+
+                move 2:
+                {
+                    zPos = monsterinfo::zPosition[i] + 1;
+
+                    if( CheckForMonsterPosition( monsterinfo::xPosition[i], zPos ) == false)
+                    {
+                        monsterinfo::zPosition[i] += 1; // Monster goes down.
+                        RetryLoop = false;
+                    }
+
+                    break;
+                }
+
+                move 3:
+                {
+                    xPos = monsterinfo::xPosition[i] - 1;
+
+                    if( CheckForMonsterPosition( xPos, monsterinfo::zPosition[i] ) == false)
+                    {
+                        monsterinfo::xPosition[i] -= 1; // Monster goes left.
+                        RetryLoop = false;
+                    }
+
+                    break;
+                }
+
+                move 4:
+                {
+                    zPos = monsterinfo::zPosition[i] + 1;
+
+                    if( CheckForMonsterPosition( xPos, monsterinfo::zPosition[i] ) == false)
+                        monsterinfo::xPosition[i] += 1; // Monster goes right.
+                        RetryLoop = false;
+                    }
+
+}                   
