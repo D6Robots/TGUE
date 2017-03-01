@@ -2,104 +2,50 @@
 #include <time.h>
 #include <vector>
 #include <string> 
+using namespace std;
 
-class monster 
+class Monster 
 
 {
     public:
-            static int xPosition;
-            static int zPosition;
-            static int monsterstatus;
-            static int monstertotal;        
-
-} 
-
-int monster::monsterstatus = 0;
-int monster::monstertotal = 0;
-std::vector<int> monsterinfo::xPosition;
-std::vector<int> monsterinfo::zPosition;
-
-void AmountOfMonster ();
-void MonsterMovement();
-
-void AmountOfMonster( )
-{
-    while( true ) 
-    {
-        std::string input;
-
-        std::cout << "Enter desired amount of monsters: ";
-         std::cin >> input;
-
-        if( CheckUnvaildIntegerInput( input ) == true )
-        {
-            monsterinfo::monsterAmountDesired = atoi( input.c_str( ) ); // Convert string to integer.
-    }
-}
-
+            int xPosition;
+            int yPosition;
+            int monsterstatus;
+            int monstertotal;        
+        
     
-}
+        //Movement methods for monster
+        int moveUp(int movement){
+            yPosition = yPosition - movement;
+        }
+        int moveDown(int movement){
+            yPosition = yPosition + movement;
+        }
+        int moveLeft(int movement){
+            xPosition = xPosition - movement;
+        }
+        int moveRight(int movement){
+            xPosition = xPosition + movement;
+        }
+}; 
+      
+int main (){
     
-void MonsterMovement( )
-{
-    int xPos, zPos;
-    int randomPos;
-for( int i = 0; i < monsterinfo::monsterAmountCurrent; i++ )
-    {
-        bool RetryLoop = true;
+    //Make monster 1 and position on map
+    Monster monster1;
+    monster1.xPosition =1;
+    monster1.yPosition =1;
+    
+    //Make monster 2 and position on map
+    Monster monster2;
+    monster2.xPosition = 151;
+    monster2.yPosition = 32;
+    
 
-        do
-        {
-            randomPos = 1 + ( rand( ) % 8 );
-
-            switch( randomPos )
-            {
-                move 1:
-                {
-                    xPos = monsterinfo::xPosition[i] - 1;
-
-                    if( CheckForMonsterPosition( monsterinfo::xPosition[i], zPos ) == false)
-                    {
-                        monsterinfo::xPosition[i] -= 1; // Monster goes up.
-                        RetryLoop = false;
-                    }
-
-                    break;
-                }
-
-                move 2:
-                {
-                    zPos = monsterinfo::zPosition[i] + 1;
-
-                    if( CheckForMonsterPosition( monsterinfo::xPosition[i], zPos ) == false)
-                    {
-                        monsterinfo::zPosition[i] += 1; // Monster goes down.
-                        RetryLoop = false;
-                    }
-
-                    break;
-                }
-
-                move 3:
-                {
-                    xPos = monsterinfo::xPosition[i] - 1;
-
-                    if( CheckForMonsterPosition( xPos, monsterinfo::zPosition[i] ) == false)
-                    {
-                        monsterinfo::xPosition[i] -= 1; // Monster goes left.
-                        RetryLoop = false;
-                    }
-
-                    break;
-                }
-
-                move 4:
-                {
-                    zPos = monsterinfo::zPosition[i] + 1;
-
-                    if( CheckForMonsterPosition( xPos, monsterinfo::zPosition[i] ) == false)
-                        monsterinfo::xPosition[i] += 1; // Monster goes right.
-                        RetryLoop = false;
-                    }
-
-}                   
+    cout <<monster2.xPosition << endl;
+    //Move monster2 to the left by 21 places
+    monster2.moveLeft(21);
+    cout << "Monster 2: " << monster2.xPosition << endl;
+    cout << "Monster 1: " << monster1.xPosition << endl;
+    return 0;
+}
