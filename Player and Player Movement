@@ -1,0 +1,94 @@
+// Player_move.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <conio.h>
+#include <string>
+#include <stdio.h>
+#include <windows.h>
+using namespace std;
+
+
+
+/* conio.h is the library that I implemented to use the KBhit function    */
+
+
+void Input()
+{
+	if (_kbhit())
+	{
+	switch (_getch())
+	{
+	case 'a':
+		dir = LEFT;
+		break;
+	case 'd':
+		dir = RIGHT;
+		break;
+	case 'w':
+		dir = UP;
+		break;
+	case 's':
+		dir = DOWN;
+		break;
+	case 'x':
+		gameOver = true;
+		break;
+		  }
+	}
+}
+void Logic()
+{
+
+	switch (dir)
+	{
+	case LEFT:
+		x--;
+		dir = STOP;
+		Draw();
+		break;
+	case RIGHT:
+		x++;
+		dir = STOP;
+		Draw();
+		break;
+	case UP:
+		y--;
+		dir = STOP;
+		Draw();
+		break;
+	case DOWN:
+		y++;
+		dir = STOP;
+		Draw();
+		break;
+	default:
+		break;
+
+	
+	}
+	if (x > width || x < 0 || y > height || y < 0)
+		gameOver = true;
+	if (x >= width) x = 0; else if (x < 0) x = width - 1;
+	if (y >= height) y = 0; else if (y < 0) y = height - 1;
+}
+
+int main()
+{
+		/*map myMap;
+		string fileName = "level1.txt";
+		myMap.importMap(fileName);*/
+
+		Setup();
+		Draw();
+		while (!gameOver)
+		{
+			
+			Input();
+			Logic();
+			Sleep(100);
+		}
+}
+
+
