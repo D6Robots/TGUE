@@ -113,7 +113,9 @@ int level;
     Defferal.health = 50; // Adds 50 points to the Health of the Player
     Defferal.pickuptotal(a);
     
-    //Section Used for testing the random location, by Printing it Out
+    
+    
+    /*Section Used for testing the random location, by Printing it Out
     cout << "The Extension x Position is : "<<Extension.xPosition << endl;
     cout << "The Extension y Position is : "<<Extension.yPosition << endl;
     
@@ -122,15 +124,16 @@ int level;
     
     cout <<"The Defferal pick up adds : "<<Defferal.health<<endl;
     cout <<"The Extension pick up adds : "<<Extension.health<<endl;
+    */
     
     
-    //Used to test the amount of pickups available in the level 
+    /*Used to test the amount of pickups available in the level 
     for( int a = 1; a < 7; a = a + 1 ) {
       cout << "value of a: " << a << endl;
       cout << "The Defferal pickup level for this level is  : " << Defferal.pickuptotal(a) <<endl;
       cout << "The Extension pickup level for this level is  : " << Extension.pickuptotal(a) <<endl;
    } 
-    
+    */
     
     
     
