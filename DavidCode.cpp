@@ -151,6 +151,25 @@ class Player
         {
             mapData[0][0] = "next level";  // Adds a tag which tells the game to go to the next level, if the player reached the end of the level
         }
+        else if (mapData[tentativePosition[1]][tentativePosition[0]] == "+")
+        {
+            if(Player::health > 70)  // Ensures player health will never go above 100
+            {
+                Player::health = 100;
+            }
+            else
+            {
+                Player::health = Player::health + 30;  // Adds 30 to player health
+            }
+            mapData[currentPosition[1]][currentPosition[0]] = " ";  // Sets the previous position to empty space
+            mapData[tentativePosition[1]][tentativePosition[0]] = "p";  // Puts player in the next position, removing the health pack
+        }
+        else if (mapData[tentativePosition[1]][tentativePosition[0]] == "x")
+        {
+            Player::health = Player::health - 50;  // Subtracts 50 from player health if player walks over mine
+            mapData[currentPosition[1]][currentPosition[0]] = " ";  // Sets the previous position to empty space
+            mapData[tentativePosition[1]][tentativePosition[0]] = "p";  // Puts player in the next position, removing the mine
+        }
         else
         {
             mapData[currentPosition[1]][currentPosition[0]] = " ";  // Sets the previous position to empty space
@@ -196,8 +215,9 @@ int main()
     // Main game loop
     while(gameOver == false)
     {
-        system("clear");
+        system("clear");  // Clears the console
         
+        // Checks if the game should load the next map
         if (mapData[0][0] == "next level")
         {
             if (currentLevel == 1)
@@ -228,31 +248,40 @@ int main()
         }
         
         currentPosition = player.getPosition(mapData);
-        map.drawMap(mapData);
+        map.drawMap(mapData);  // Draws the map
         
         cout << endl << "Your health is " << player.health << "." << endl;
-        cout << "What is your next move?: ";
-        cin >> nextMove;
-        
-        if (nextMove == "d")
-        {
-            mapData = player.move(currentPosition, "right", mapData);
-        }
-        else if (nextMove == "a")
-        {
-            mapData = player.move(currentPosition, "left", mapData);
-        }
-        else if (nextMove == "w")
-        {
-            mapData = player.move(currentPosition, "up", mapData);
-        }
-        else if (nextMove == "s")
-        {
-            mapData = player.move(currentPosition, "down", mapData);
-        }
-        else if (nextMove == "end")
+        if (player.health < 0)  // Checks if player has died
         {
             gameOver = true;
+            cout << "Game over!" << endl;
+        }
+        else
+        {
+            cout << "What is your next move?: ";
+            cin >> nextMove;
+        
+            if (nextMove == "d")
+            {
+                mapData = player.move(currentPosition, "right", mapData);
+            }
+            else if (nextMove == "a")
+            {
+                mapData = player.move(currentPosition, "left", mapData);
+            }
+            else if (nextMove == "w")
+            {
+                mapData = player.move(currentPosition, "up", mapData);
+            }
+            else if (nextMove == "s")
+            {
+                mapData = player.move(currentPosition, "down", mapData);
+            }
+            else if (nextMove == "end")
+            {
+                gameOver = true;
+                cout << "You ended the game" << endl;
+            }
         }
         
     }
