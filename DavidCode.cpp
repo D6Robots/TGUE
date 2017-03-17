@@ -55,7 +55,7 @@ class Map
 		mapFile.close();
 	}
     
-    /*
+    
     void getHealthPickups(std::string sqliteFile)
     {
         try
@@ -77,7 +77,6 @@ class Map
             std::cerr << e.what() << std::endl;
         }
     }
-    */
     
     // Takes the map as an array as input and adds pickups at random empty locations before returning the map
     array <array<string, 160>, 40> spawnPickups(array <array<string, 160>, 40> mapData)
