@@ -63,16 +63,16 @@ class Map
             sqlite::sqlite db( sqliteFile );
             auto cur = db.get_statement();
             cur->step();
-            cur->set_sql( "select * from Loot where Type = 'health';");
+            cur->set_sql( "select * from Loot where Type = 'health';");  // Finds pickups of the 'health' type
             cur->prepare();
-            while( cur->step())
+            while( cur->step())  // Moves to the next row in the table
             {
-                string name = cur ->get_text(1);
+                string name = cur ->get_text(1);  // Gets the text from the second column and stores it as a variable
                 cout << name << endl;
             }
         }
         
-        catch( sqlite::exception e )      // catch all sql issues
+        catch( sqlite::exception e )      // Catches all SQL issues
         {
             std::cerr << e.what() << std::endl;
         }
