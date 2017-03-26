@@ -1,7 +1,7 @@
 // Player_move.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#include "stdafx.h" //visual studio
 #include <iostream>
 #include <conio.h>
 #include <string>
@@ -34,8 +34,8 @@ public:
 	{
 
 	}
-};*/
-bool gameOver = false;
+};*/      //pull the map from davids code but was unsucessful
+bool gameOver = false; 
 int x;
 int y;
 int itemX, itemY;
@@ -44,15 +44,15 @@ const int width = 30;
 const int height = 30;
 enum eDirecton { STOP = 0, LEFT, RIGHT, UP, DOWN };
 eDirecton dir;
-
+// container ed , declare dir 
 
 void Setup()
 {
 	gameOver = false;
 	dir = STOP;
-	x = width / 2;
-	y = height / 2;
-	itemX = rand() % width;
+    x = width / 2; //player x position (in the middle) 
+	y = height / 2; //player y position (in the middle)-- so player's starting point is in the middle of the map
+    itemX = rand() % width;
 	itemY = rand() % height;
 	score = 0;
 }
@@ -75,9 +75,6 @@ void Draw()
 			     else
 					
 			cout << " ";
-			//}
-			
-
 			if (j == width - 1)
 				cout << "#";
 		}
@@ -145,7 +142,7 @@ void Logic()
 
 	
 	}
-	if (x > width || x < 0 || y > height || y < 0)
+	if (x > width || x < 0 || y > height || y < 0)       
 		gameOver = true;
 	if (x >= width) x = 0; else if (x < 0) x = width - 1;
 	if (y >= height) y = 0; else if (y < 0) y = height - 1;
@@ -168,15 +165,15 @@ int main()
 		}
 }
 
-
-/*void insertion(std::string sqliteFile)
+//while loop till its gameover = true
+void insertion(std::string sqliteFile)
 {
 	try
 	{
 		sqlite::sqlite db(sqliteFile);
 		auto cur = db.get_statement();
 		cur->step();
-		cur->set_sql("INSERT INTO Player (Name, Armour, Health, Damage, Current score) values ('Student', '100', '100', '10','0');");
+		cur->set_sql("INSERT INTO Player (Name, Armour, Health, Damage, Current score) values ('Student', '100', '100', '10',?);" (score));
 		cur->prepare();
 		cur->step();
 
@@ -184,7 +181,7 @@ int main()
 	catch (sqlite::exception e)      // catch all sql issues
 	{
 		std::cerr << e.what() << std::endl;
-	} */
+	}
 
 
 
