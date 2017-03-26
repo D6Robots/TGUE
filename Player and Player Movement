@@ -181,3 +181,24 @@ int main()
 }
 
 
+/*void insertion(std::string sqliteFile)
+{
+	try
+	{
+		sqlite::sqlite db(sqliteFile);
+		auto cur = db.get_statement();
+		cur->step();
+		cur->set_sql("INSERT INTO Player (Name, Armour, Health, Damage, Current score) values ('Student', '100', '100', '10','0');");
+		cur->prepare();
+		cur->step();
+
+	}
+	catch (sqlite::exception e)      // catch all sql issues
+	{
+		std::cerr << e.what() << std::endl;
+	} */
+
+
+
+
+}
